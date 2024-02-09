@@ -1,5 +1,7 @@
 'use strict'
 
+require('dotenv').config()
+
 // create the mongodb uri for development and test
 const database = {
 	development: process.env.MONGODB_URI,

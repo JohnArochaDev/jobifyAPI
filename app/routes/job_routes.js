@@ -7,7 +7,7 @@ const removeBlanks = require('../../lib/remove_blank_fields')
 const requireToken = passport.authenticate('bearer', { session: false })
 const router = express.Router()
 
-const Job = require('../models/pet')
+const Job = require('../models/job')
 
 
 // INDEX
