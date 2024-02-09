@@ -1,15 +1,18 @@
 const mongoose = require('mongoose')
 
-const exampleSchema = new mongoose.Schema(
+const trackerSchema = require('./tracker')
+
+const jobSchema = new mongoose.Schema(
 	{
 		title: {
 			type: String,
 			required: true,
 		},
-		text: {
+		description: {
 			type: String,
 			required: true,
 		},
+		tracker: [trackerSchema],
 		owner: {
 			type: mongoose.Schema.Types.ObjectId,
 			ref: 'User',
@@ -21,4 +24,4 @@ const exampleSchema = new mongoose.Schema(
 	}
 )
 
-module.exports = mongoose.model('Example', exampleSchema)
+module.exports = mongoose.model('Job', jobSchema)
