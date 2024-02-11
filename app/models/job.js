@@ -4,15 +4,19 @@ const trackerSchema = require('./tracker')
 
 const jobSchema = new mongoose.Schema(
 	{
+		img: {
+			type: String,
+			required: true,
+		},
 		title: {
 			type: String,
 			required: true,
 		},
-		status: {
+		company: {
 			type: String,
 			required: true,
 		},
-		description: {
+		status: {
 			type: String,
 			required: true,
 		},
