@@ -20,6 +20,10 @@ const jobSchema = new mongoose.Schema(
 			type: String,
 			required: true,
 		},
+		details: {
+			type: String,
+			required: true,
+		},
 		tracker: [trackerSchema],
 		owner: {
 			type: mongoose.Schema.Types.ObjectId,
