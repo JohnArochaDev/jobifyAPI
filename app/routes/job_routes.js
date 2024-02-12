@@ -28,12 +28,69 @@ router.get('/applied', requireToken, (req, res, next) => {
 })
 
 
+// index of saved
+// displays a list of jobs saved
+// GET /applied/applied
+router.get('/applied/saved', requireToken, (req, res, next) => {
+		// Use the `find` method with a query object to filter by status
+		Job.find({ status: 'saved' })
+			.populate('owner')
+			.then((jobs) => {
+				// `jobs` will be an array of Mongoose documents
+				// we want to convert each one to a POJO, so we use `.map` to apply `.toObject` to each one
+				const jobsArray = jobs.map((job) => job.toObject());
+	
+				// respond with status 200 and JSON of the jobs
+				res.status(200).json({ jobs: jobsArray });
+			})
+			// if an error occurs, pass it to the handler
+			.catch(next);
+})
+
 // index of applied
 // displays a list of jobs applied to
-// GET /applied
-router.get('/applied/index', requireToken, (req, res, next) => {
+// GET /applied/applied
+router.get('/applied/applied', requireToken, (req, res, next) => {
 		// Use the `find` method with a query object to filter by status
 		Job.find({ status: 'applied' })
+			.populate('owner')
+			.then((jobs) => {
+				// `jobs` will be an array of Mongoose documents
+				// we want to convert each one to a POJO, so we use `.map` to apply `.toObject` to each one
+				const jobsArray = jobs.map((job) => job.toObject());
+	
+				// respond with status 200 and JSON of the jobs
+				res.status(200).json({ jobs: jobsArray });
+			})
+			// if an error occurs, pass it to the handler
+			.catch(next);
+})
+
+// index of interview
+// displays a list of jobs with an interview
+// GET /applied/applied
+router.get('/applied/interview', requireToken, (req, res, next) => {
+		// Use the `find` method with a query object to filter by status
+		Job.find({ status: 'interview' })
+			.populate('owner')
+			.then((jobs) => {
+				// `jobs` will be an array of Mongoose documents
+				// we want to convert each one to a POJO, so we use `.map` to apply `.toObject` to each one
+				const jobsArray = jobs.map((job) => job.toObject());
+	
+				// respond with status 200 and JSON of the jobs
+				res.status(200).json({ jobs: jobsArray });
+			})
+			// if an error occurs, pass it to the handler
+			.catch(next);
+})
+
+// index of rejected
+// displays a list of jobs rejected
+// GET /applied/applied
+router.get('/applied/rejected', requireToken, (req, res, next) => {
+		// Use the `find` method with a query object to filter by status
+		Job.find({ status: 'rejected' })
 			.populate('owner')
 			.then((jobs) => {
 				// `jobs` will be an array of Mongoose documents
