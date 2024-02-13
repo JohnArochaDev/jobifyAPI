@@ -33,7 +33,8 @@ router.get('/applied', requireToken, (req, res, next) => {
 // GET /applied/applied
 router.get('/applied/saved', requireToken, (req, res, next) => {
 		// Use the `find` method with a query object to filter by status
-		Job.find({ status: 'saved' })
+		ownerId = req.user.id
+		Job.find({ status: 'saved', owner: ownerId })
 			.populate('owner')
 			.then((jobs) => {
 				// `jobs` will be an array of Mongoose documents
@@ -52,7 +53,8 @@ router.get('/applied/saved', requireToken, (req, res, next) => {
 // GET /applied/applied
 router.get('/applied/applied', requireToken, (req, res, next) => {
 		// Use the `find` method with a query object to filter by status
-		Job.find({ status: 'applied' })
+		ownerId = req.user.id
+		Job.find({ status: 'applied', owner: ownerId })
 			.populate('owner')
 			.then((jobs) => {
 				// `jobs` will be an array of Mongoose documents
@@ -71,7 +73,8 @@ router.get('/applied/applied', requireToken, (req, res, next) => {
 // GET /applied/applied
 router.get('/applied/interview', requireToken, (req, res, next) => {
 		// Use the `find` method with a query object to filter by status
-		Job.find({ status: 'interview' })
+		const ownerId = req.user.id
+		Job.find({ status: 'interview', owner: ownerId })
 			.populate('owner')
 			.then((jobs) => {
 				// `jobs` will be an array of Mongoose documents
@@ -90,7 +93,8 @@ router.get('/applied/interview', requireToken, (req, res, next) => {
 // GET /applied/applied
 router.get('/applied/rejected', requireToken, (req, res, next) => {
 		// Use the `find` method with a query object to filter by status
-		Job.find({ status: 'rejected' })
+		const ownerId = req.user.id
+		Job.find({ status: 'rejected', owner: ownerId })
 			.populate('owner')
 			.then((jobs) => {
 				// `jobs` will be an array of Mongoose documents
